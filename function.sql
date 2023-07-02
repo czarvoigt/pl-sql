@@ -1,3 +1,4 @@
+--teste
 create or replace function F_RETURN_SAL(id in emp.empno%type)
   return integer is
   FunctionResult integer;
