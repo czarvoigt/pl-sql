@@ -18,7 +18,7 @@ aux number;
 BEGIN 
   for i in 1..10 loop
     for n in 1..10 loop
-      if var1(i) > var1(n) then
+      if var1(n) > var1(i) then
         aux :=var1(i);
         var1(i):=var1(n);
         var1(n):=aux;
@@ -26,7 +26,7 @@ BEGIN
  end loop;
  end loop;
  
- for j in reverse 1..10 loop
+ for j in 1..10 loop
    dbms_output.put_line(var1(j));
    end loop;
 end;
