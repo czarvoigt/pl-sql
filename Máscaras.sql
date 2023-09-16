@@ -1,0 +1,3 @@
+SELECT TO_NUMBER('10,5' /*EXPR [ DEFAULT RETURN_VALUE ON CONVERSION ERROR ]*/,
+                 '99.9' /*FMT*/) FROM DUAL
+                 
