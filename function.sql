@@ -1,19 +1,29 @@
---teste
-create or replace function F_RETURN_SAL(id in emp.empno%type)
-  return integer is
-  FunctionResult integer;
-  vsal           integer;
-  vcad           integer;
-begin
-  select nvl(count(*), 0) into vcad from emp e where e.empno = id;
+/* Exemplo função verifica se existe o funcionário com o ID especificado
+    caso sim, retorna o salário. Caso não exista, retorna -1 */
 
-  if vcad <> 0 then
-  
-    select sal into vsal from emp where empno = id;
-    FunctionResult := vsal;
-  else
-    FunctionResult := -1;
-  end if;
+CREATE OR REPLACE FUNCTION F_RETURN_SAL (id IN emp.empno%TYPE)
+    RETURN INTEGER
+IS
+    FunctionResult   INTEGER;
+    vsal             INTEGER;
+    vcad             INTEGER;
+BEGIN
+    SELECT NVL (1, 0)
+      INTO vcad
+      FROM emp e
+     WHERE e.empno = id;
 
-  return(FunctionResult);
-end F_RETURN_SAL;
+    IF vcad <> 0
+    THEN
+        SELECT sal
+          INTO vsal
+          FROM emp
+         WHERE empno = id;
+
+        FunctionResult := vsal;
+    ELSE
+        FunctionResult := -1;
+    END IF;
+
+    RETURN (FunctionResult);
+END F_RETURN_SAL;
